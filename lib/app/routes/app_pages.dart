@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.SIGNUP;
+  static const INITIAL = Routes.LOGIN;
 
   static final routes = [
     GetPage(
