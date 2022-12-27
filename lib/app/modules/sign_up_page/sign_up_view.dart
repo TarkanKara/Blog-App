@@ -104,20 +104,25 @@ class SignUpView extends GetView<SignUpController> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    RichText(
-                      text: TextSpan(
-                        text: "Already have an account? ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(fontSize: 18, color: Colors.grey),
-                        children: const [
-                          TextSpan(
-                              text: " Logn in",
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold)),
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Already have an account? ",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontSize: 18, color: Colors.grey),
+                          children: const [
+                            TextSpan(
+                                text: " Logn in",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        ),
                       ),
                     ),
                   ],

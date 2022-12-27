@@ -2,7 +2,9 @@
 
 import 'package:blog_app/app/modules/login_page/login_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
+
+import '../../routes/app_pages.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
@@ -109,20 +111,25 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     const SizedBox(height: 50),
-                    RichText(
-                      text: TextSpan(
-                        text: "Don't have an account? ",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(fontSize: 18, color: Colors.grey),
-                        children: const [
-                          TextSpan(
-                              text: " Sign Up",
-                              style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold)),
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(Routes.SIGNUP);
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                          text: "Don't have an account? ",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontSize: 18, color: Colors.grey),
+                          children: const [
+                            TextSpan(
+                                text: " Sign Up",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        ),
                       ),
                     ),
                   ],
