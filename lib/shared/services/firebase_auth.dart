@@ -1,7 +1,10 @@
 // ignore_for_file: unused_field, avoid_print
 
+import 'package:blog_app/utils/show_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+
+import '../../app/routes/app_pages.dart';
 
 class AuthService extends GetxService {
   //
@@ -27,12 +30,18 @@ class AuthService extends GetxService {
   //Login Users
   Future<void> login(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } catch (e) {
-      print(e);
+      await _auth
+          .signInWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then((value) => Get.offAllNamed(Routes.HOMEVIEW));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showAlert("Hatalı Email");
+      } else if (e.code == 'wrong-password') {
+        showAlert("Yanlış Şifre Girdiniz.");
+      }
     }
   }
 

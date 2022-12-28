@@ -31,13 +31,8 @@ class LoginController extends GetxController {
   Future<void> onLoading() async {
     if (login_email.text.isNotEmpty && login_password.text.isNotEmpty) {
       Indicator.showLoading();
-      await _authService
-          .login(login_email.text, login_password.text)
-          .then((value) {
-        showAlert("Başaralı Login");
-      });
+      await _authService.login(login_email.text, login_password.text);
       Indicator.closeLoading();
-      Get.toNamed(Routes.HOMEVIEW);
     } else {
       print("Tüm alnları doldurunuz");
       showAlert("Tüm alnları doldurunuz");
