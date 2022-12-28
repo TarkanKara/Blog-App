@@ -10,13 +10,13 @@ import 'package:get/get.dart';
 import '../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  //
+  //GestureRecognizer
   late GestureRecognizer _tapGestureRecognizer;
 
   //AuthService
   final AuthService _authService = AuthService();
 
-  //
+  //TextEditingController
   TextEditingController login_email = TextEditingController();
   TextEditingController login_password = TextEditingController();
 
@@ -28,6 +28,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
+  //onLoading
   Future<void> onLoading() async {
     if (login_email.text.isNotEmpty && login_password.text.isNotEmpty) {
       Indicator.showLoading();

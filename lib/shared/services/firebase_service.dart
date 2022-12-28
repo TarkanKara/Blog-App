@@ -6,8 +6,7 @@ class FirebaseService extends GetxService {
   //
   Future<FirebaseService> init() async {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+        options: DefaultFirebaseOptions.currentPlatform);
     return this;
   }
 }

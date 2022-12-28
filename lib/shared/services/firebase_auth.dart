@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../../app/routes/app_pages.dart';
 
 class AuthService extends GetxService {
-  //
+  //AutService
   Future<AuthService> init() async {
     return this;
   }
@@ -22,6 +22,12 @@ class AuthService extends GetxService {
         email: email,
         password: password,
       );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        showAlert("Sağlanan parola çok zayıf.");
+      } else if (e.code == 'email-already-in-use') {
+        showAlert("Bu e-posta için hesap zaten var");
+      }
     } catch (e) {
       print(e);
     }
