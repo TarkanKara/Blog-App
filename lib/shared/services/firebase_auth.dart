@@ -18,10 +18,15 @@ class AuthService extends GetxService {
   //Create Account
   Future<void> createAccount(String email, String password) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
+      await _auth
+          .createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      )
+          .then((value) {
+        Get.offAllNamed(Routes.LOGIN);
+        showAlert("Kayıt Başaralı");
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         showAlert("Sağlanan parola çok zayıf.");
@@ -38,10 +43,13 @@ class AuthService extends GetxService {
     try {
       await _auth
           .signInWithEmailAndPassword(
-            email: email,
-            password: password,
-          )
-          .then((value) => Get.offAllNamed(Routes.HOMEVIEW));
+        email: email,
+        password: password,
+      )
+          .then((value) {
+        Get.offAllNamed(Routes.HOMEVIEW);
+        showAlert("Kullanıcı Girişi Başaralı");
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         showAlert("Hatalı Email");
