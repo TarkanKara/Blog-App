@@ -60,6 +60,7 @@ class LoginView extends GetView<LoginController> {
                               "EMAIL",
                               "abc@gmail.com",
                               false,
+                              controller.login_email,
                             ),
                             const SizedBox(height: 20),
                             textField(
@@ -68,6 +69,7 @@ class LoginView extends GetView<LoginController> {
                               "PASSWORD",
                               "ABC123",
                               true,
+                              controller.login_password,
                             ),
                           ],
                         ),
@@ -94,7 +96,9 @@ class LoginView extends GetView<LoginController> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 45, vertical: 10),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.onLoading();
+                      },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -144,7 +148,7 @@ class LoginView extends GetView<LoginController> {
 
   //TextField
   Widget textField(BuildContext context, String text, String labelText,
-      String hintText, bool isPassword) {
+      String hintText, bool isPassword, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Column(
@@ -157,6 +161,7 @@ class LoginView extends GetView<LoginController> {
                   fontWeight: FontWeight.bold)),
           const SizedBox(height: 5),
           TextField(
+              controller: controller,
               obscureText: isPassword,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(

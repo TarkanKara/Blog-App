@@ -1,6 +1,7 @@
-// ignore_for_file: avoid_print, unused_field
+// ignore_for_file: avoid_print, unused_field, non_constant_identifier_names
 
 import 'package:blog_app/shared/services/firebase_auth.dart';
+import 'package:blog_app/utils/indicator.dart';
 import 'package:blog_app/utils/show_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -25,7 +26,9 @@ class SignUpController extends GetxController {
     if (user_name.text.isNotEmpty &&
         email.text.isNotEmpty &&
         password.text.isNotEmpty) {
+      Indicator.showLoading();
       await _authService.createAccount(email.text, password.text);
+      Indicator.closeLoading();
     } else {
       showAlert("Tüm Alanları Giriniz");
       print("Tüm Alanları Giriniz");
