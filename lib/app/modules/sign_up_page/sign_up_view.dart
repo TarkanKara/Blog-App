@@ -52,29 +52,14 @@ class SignUpView extends GetView<SignUpController> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            textField(
-                              context,
-                              "USER NAME",
-                              "NAME",
-                              "Micheal Scofied",
-                              false,
-                            ),
+                            textField(context, "USER NAME", "NAME",
+                                "Micheal Scofied", false, controller.user_name),
                             const SizedBox(height: 20),
-                            textField(
-                              context,
-                              "EMAIL ADDRESS",
-                              "EMAIL",
-                              "abc@gmail.com",
-                              false,
-                            ),
+                            textField(context, "EMAIL ADDRESS", "EMAIL",
+                                "abc@gmail.com", false, controller.email),
                             const SizedBox(height: 20),
-                            textField(
-                              context,
-                              "PASSWORD",
-                              "PASSWORD",
-                              "ABC123",
-                              true,
-                            ),
+                            textField(context, "PASSWORD", "PASSWORD", "ABC123",
+                                true, controller.password),
                           ],
                         ),
                       ),
@@ -87,7 +72,9 @@ class SignUpView extends GetView<SignUpController> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 45, vertical: 10),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.onCreateAccount();
+                      },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -137,7 +124,7 @@ class SignUpView extends GetView<SignUpController> {
 
   //TextField
   Widget textField(BuildContext context, String text, String labelText,
-      String hintText, bool isPassword) {
+      String hintText, bool isPassword, TextEditingController textController) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Column(
@@ -150,6 +137,7 @@ class SignUpView extends GetView<SignUpController> {
                   fontWeight: FontWeight.bold)),
           const SizedBox(height: 5),
           TextField(
+              controller: textController,
               obscureText: isPassword,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
