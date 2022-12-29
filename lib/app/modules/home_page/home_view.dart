@@ -39,16 +39,42 @@ class HomeView extends GetView<HomeController> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.w),
-                  child: const Post(),
-                );
+            child: GetBuilder<HomeController>(
+              builder: (value) {
+                if (value.blogs.isNotEmpty) {
+                  return ListView.builder(
+                    controller: controller.scrollController,
+                    itemCount: value.blogs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 3.w, vertical: 2.w),
+                        child: Post(
+                          model: value.blogs[index],
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return const Center(
+                    child: Text("How about writing a new blog?"),
+                  );
+                }
               },
             ),
           ),
+          Obx(
+            () {
+              if (controller.isLoading.value) {
+                return SizedBox(
+                  height: 50.h,
+                  child: const CircularProgressIndicator.adaptive(),
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(

@@ -1,3 +1,4 @@
+import 'package:blog_app/app/models/blog_models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -5,7 +6,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../routes/app_pages.dart';
 
 class Post extends StatelessWidget {
-  const Post({super.key});
+  final BlogsModel model;
+  const Post({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +25,20 @@ class Post extends StatelessWidget {
               //Image
               Container(
                 height: 25.h,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage("https://picsum.photos/536/354"),
+                    image: NetworkImage(model.image),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               SizedBox(height: 1.h),
               Text(
-                "Blog Post Title",
+                model.title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
