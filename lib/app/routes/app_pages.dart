@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:blog_app/app/modules/blog_detail/blog_detail_binding.dart';
+import 'package:blog_app/app/modules/blog_detail/blog_detail_view.dart';
 import 'package:blog_app/app/modules/home_page/home_binding.dart';
 import 'package:blog_app/app/modules/home_page/home_view.dart';
 import 'package:blog_app/app/modules/login_page/login_binding.dart';
@@ -35,6 +37,11 @@ class AppPages {
       name: Routes.UPLOAD_BLOG,
       page: () => const UploadBlogView(),
       binding: UploadBlogBinding(),
+    ),
+    GetPage(
+      name: Routes.BLOG_DETAIL_VIEW,
+      page: () => const BlogDetailView(),
+      binding: BlogDetailBinding(),
     ),
   ];
 }

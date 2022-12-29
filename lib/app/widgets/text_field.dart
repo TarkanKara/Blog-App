@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: isMultine ? 200.h : 10.h,
+      height: isMultine ? 30.h : 10.h,
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 3.h),
       child: TextField(

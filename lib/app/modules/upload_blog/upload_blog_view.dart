@@ -1,4 +1,5 @@
 import 'package:blog_app/app/modules/upload_blog/upload_blog_controller.dart';
+import 'package:blog_app/app/widgets/custom_button.dart';
 import 'package:blog_app/app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,8 +64,29 @@ class UploadBlogView extends GetView<UploadBlogController> {
                 hintText: "blog post",
                 labelText: "Description",
               ),
+              SizedBox(height: 1.w),
+              Container(
+                height: 20.h,
+                width: 150.w,
+                alignment: Alignment.center,
+                child: CustomButton(
+                  icon: Icons.upload_file_rounded,
+                  title: "Upload Image",
+                  function: () {},
+                ),
+              )
             ],
           ),
+        ),
+      ),
+      floatingActionButton: Container(
+        height: 15.h,
+        width: double.infinity,
+        alignment: Alignment.bottomRight,
+        child: CustomButton(
+          icon: Icons.upload,
+          title: "CREATE BLOG",
+          function: () {},
         ),
       ),
     );

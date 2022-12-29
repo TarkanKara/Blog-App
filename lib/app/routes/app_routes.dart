@@ -7,4 +7,5 @@ abstract class Routes {
   static const LOGIN = "/login";
   static const HOMEVIEW = "/home_view";
   static const UPLOAD_BLOG = "/upload_blog";
+  static const BLOG_DETAIL_VIEW = "/blog_detail_view";
 }
