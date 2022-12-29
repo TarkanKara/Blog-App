@@ -69,12 +69,22 @@ class UploadBlogView extends GetView<UploadBlogController> {
                 height: 20.h,
                 width: 150.w,
                 alignment: Alignment.center,
-                child: CustomButton(
-                  icon: Icons.upload_file_rounded,
-                  title: "Upload Image",
-                  function: () {},
+                child: GetBuilder<UploadBlogController>(
+                  builder: (controller) {
+                    if (controller.imageFile != null) {
+                      return Image.file(controller.imageFile!);
+                    } else {
+                      return CustomButton(
+                        icon: Icons.upload_file_rounded,
+                        title: "Upload Image",
+                        function: () {
+                          controller.selectImage();
+                        },
+                      );
+                    }
+                  },
                 ),
-              )
+              ),
             ],
           ),
         ),
