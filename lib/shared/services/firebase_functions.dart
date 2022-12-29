@@ -76,6 +76,7 @@ class FirebaseFunctions {
 
   //UploadImage FireStorage
   Future<String> uploadImage(File file) async {
+    Reference refrence;
     try {
       String imageName = generateId();
 
