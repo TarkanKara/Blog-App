@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, unused_local_variable
 
 import 'package:blog_app/utils/indicator.dart';
 import 'package:blog_app/utils/show_alert.dart';
@@ -15,15 +15,20 @@ class FirebaseFunctions {
 
   //Cloud FireStore Users
   Future<void> createUserCredential(String name, String email) async {
+    //
+    //UsersMap
+    Map<String, dynamic> userDetail = {
+      "uid": _auth.currentUser!.uid,
+      "name": name,
+      "email": email,
+    };
+
     try {
       await _firebaseFirestore
           .collection("users")
           .doc(_auth.currentUser!.uid)
-          .set({
-        "uid": _auth.currentUser!.uid,
-        "name": name,
-        "email": email,
-      }).then((value) {
+          .set(userDetail)
+          .then((value) {
         Indicator.closeLoading();
         Get.toNamed(Routes.HOMEVIEW);
       });
