@@ -15,8 +15,6 @@ class FirebaseFunctions {
 
   //Cloud FireStore Users
   Future<void> createUserCredential(String name, String email) async {
-    //
-
     try {
       //UsersMap
       Map<String, dynamic> userDetail = {
