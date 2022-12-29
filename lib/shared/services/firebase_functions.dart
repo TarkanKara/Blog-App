@@ -16,14 +16,14 @@ class FirebaseFunctions {
   //Cloud FireStore Users
   Future<void> createUserCredential(String name, String email) async {
     //
-    //UsersMap
-    Map<String, dynamic> userDetail = {
-      "uid": _auth.currentUser!.uid,
-      "name": name,
-      "email": email,
-    };
 
     try {
+      //UsersMap
+      Map<String, dynamic> userDetail = {
+        "uid": _auth.currentUser!.uid,
+        "name": name,
+        "email": email,
+      };
       await _firebaseFirestore
           .collection("users")
           .doc(_auth.currentUser!.uid)
