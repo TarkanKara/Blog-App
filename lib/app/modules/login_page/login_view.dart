@@ -97,7 +97,7 @@ class LoginView extends GetView<LoginController> {
                             horizontal: 45, vertical: 10),
                       ),
                       onPressed: () {
-                        controller.onLoading();
+                        controller.onLogin();
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,

@@ -13,6 +13,7 @@ class FirebaseFunctions {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  //Cloud FireStore Users
   Future<void> createUserCredential(String name, String email) async {
     try {
       await _firebaseFirestore

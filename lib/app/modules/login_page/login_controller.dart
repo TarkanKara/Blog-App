@@ -29,7 +29,7 @@ class LoginController extends GetxController {
   }
 
   //onLoading
-  Future<void> onLoading() async {
+  Future<void> onLogin() async {
     if (login_email.text.isNotEmpty && login_password.text.isNotEmpty) {
       Indicator.showLoading();
       await _authService.login(login_email.text, login_password.text);
