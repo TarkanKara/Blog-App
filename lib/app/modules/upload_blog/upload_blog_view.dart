@@ -53,13 +53,13 @@ class UploadBlogView extends GetView<UploadBlogController> {
               CustomTextField(
                 maxTextLength: 25,
                 isMultine: false,
-                controller: TextEditingController(),
+                controller: controller.title,
                 hintText: "write something",
                 labelText: "Title",
               ),
               SizedBox(height: 1.w),
               CustomTextField(
-                controller: TextEditingController(),
+                controller: controller.description,
                 isMultine: true,
                 hintText: "blog post",
                 labelText: "Description",
@@ -96,7 +96,9 @@ class UploadBlogView extends GetView<UploadBlogController> {
         child: CustomButton(
           icon: Icons.upload,
           title: "CREATE BLOG",
-          function: () {},
+          function: () {
+            controller.createBlog();
+          },
         ),
       ),
     );
