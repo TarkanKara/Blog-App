@@ -1,3 +1,6 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:blog_app/app/models/blog_models.dart';
 import 'package:blog_app/app/modules/blog_detail/blog_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +11,7 @@ class BlogDetailView extends GetView<BlogDetailController> {
 
   @override
   Widget build(BuildContext context) {
+    final BlogsModel model = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -51,7 +55,7 @@ class BlogDetailView extends GetView<BlogDetailController> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Text(
-                "Blog Title",
+                model.title,
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
@@ -67,8 +71,8 @@ class BlogDetailView extends GetView<BlogDetailController> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.green,
-                image: const DecorationImage(
-                  image: NetworkImage("https://picsum.photos/536/354"),
+                image: DecorationImage(
+                  image: NetworkImage(model.image),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -79,7 +83,7 @@ class BlogDetailView extends GetView<BlogDetailController> {
             padding: EdgeInsets.symmetric(horizontal: 5.w),
             alignment: Alignment.centerLeft,
             child: Text(
-              "Blog Description",
+              model.description,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!

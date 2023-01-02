@@ -13,7 +13,7 @@ class Post extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.BLOG_DETAIL_VIEW);
+        Get.toNamed(Routes.BLOG_DETAIL_VIEW, arguments: model);
       },
       child: Material(
         elevation: 8,

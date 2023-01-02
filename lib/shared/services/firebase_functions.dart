@@ -80,7 +80,7 @@ class FirebaseFunctions {
     try {
       String imageName = generateId();
 
-      var refrence = _storage.ref().child("/images").child("/$imageName.jpg");
+      var refrence = _storage.ref().child("/images/$imageName.jpg");
 
       var uploadTask = await refrence.putFile(file);
 
