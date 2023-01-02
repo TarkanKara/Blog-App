@@ -6,6 +6,12 @@ import 'package:blog_app/app/modules/home_page/home_binding.dart';
 import 'package:blog_app/app/modules/home_page/home_view.dart';
 import 'package:blog_app/app/modules/login_page/login_binding.dart';
 import 'package:blog_app/app/modules/login_page/login_view.dart';
+import 'package:blog_app/app/modules/my_blogs_page/my_blogs_binding.dart';
+import 'package:blog_app/app/modules/my_blogs_page/my_blogs_view.dart';
+import 'package:blog_app/app/modules/my_favourite_page/my_favourite_binding.dart';
+import 'package:blog_app/app/modules/my_favourite_page/my_favourite_view.dart';
+import 'package:blog_app/app/modules/profile_page/profile_binding.dart';
+import 'package:blog_app/app/modules/profile_page/profile_view.dart';
 import 'package:blog_app/app/modules/sign_up_page/sign_up_binding.dart';
 import 'package:blog_app/app/modules/sign_up_page/sign_up_view.dart';
 import 'package:blog_app/app/modules/upload_blog/upload_blog_binding.dart';
@@ -42,6 +48,21 @@ class AppPages {
       name: Routes.BLOG_DETAIL_VIEW,
       page: () => const BlogDetailView(),
       binding: BlogDetailBinding(),
+    ),
+    GetPage(
+      name: Routes.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: Routes.MY_BLOGS,
+      page: () => const MyBlogsView(),
+      binding: MyBlogsBinding(),
+    ),
+    GetPage(
+      name: Routes.MY_FAVOURITE,
+      page: () => const MyFavouriteView(),
+      binding: MyFavouriteBinding(),
     ),
   ];
 }

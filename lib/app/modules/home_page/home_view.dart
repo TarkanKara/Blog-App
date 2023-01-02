@@ -26,7 +26,9 @@ class HomeView extends GetView<HomeController> {
                   ),
             ),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(Routes.PROFILE);
+                },
                 icon: Icon(
                   Icons.account_circle_rounded,
                   color: Colors.black,

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../routes/app_pages.dart';
+
 class BlogDetailView extends GetView<BlogDetailController> {
   const BlogDetailView({super.key});
 
@@ -28,7 +30,9 @@ class BlogDetailView extends GetView<BlogDetailController> {
                   ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.PROFILE);
+              },
               icon: Icon(
                 Icons.account_circle_rounded,
                 color: Colors.black,

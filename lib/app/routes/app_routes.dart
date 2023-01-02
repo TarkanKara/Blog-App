@@ -8,4 +8,7 @@ abstract class Routes {
   static const HOMEVIEW = "/home_view";
   static const UPLOAD_BLOG = "/upload_blog";
   static const BLOG_DETAIL_VIEW = "/blog_detail_view";
+  static const PROFILE = "/profile_view";
+  static const MY_BLOGS = "/my_blogs_view";
+  static const MY_FAVOURITE = "/my_favourite_view";
 }
