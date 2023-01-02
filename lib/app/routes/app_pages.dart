@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:blog_app/app/modules/authentication/authentication_bindign.dart';
+import 'package:blog_app/app/modules/authentication/authentitaciton.dart';
 import 'package:blog_app/app/modules/blog_detail/blog_detail_binding.dart';
 import 'package:blog_app/app/modules/blog_detail/blog_detail_view.dart';
 import 'package:blog_app/app/modules/home_page/home_binding.dart';
@@ -21,7 +23,7 @@ import 'package:get/get.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.AUTENTICATION;
 
   static final routes = [
     GetPage(
@@ -33,6 +35,11 @@ class AppPages {
       name: Routes.SIGNUP,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: Routes.AUTENTICATION,
+      page: () => const AuthenticationView(),
+      binding: AuthenticationBinding(),
     ),
     GetPage(
       name: Routes.HOMEVIEW,
