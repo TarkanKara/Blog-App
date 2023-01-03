@@ -40,4 +40,16 @@ class MyBlogsController extends GetxController {
     update();
     Indicator.closeLoading();
   }
+
+  //deleteBlog
+  void deleteBlog(String id) async {
+    Indicator.showLoading();
+
+    await _functions.deleteBlog(id).then((value) {
+      myBlogs = [];
+      getMyBlogsData();
+    });
+
+    Indicator.closeLoading();
+  }
 }

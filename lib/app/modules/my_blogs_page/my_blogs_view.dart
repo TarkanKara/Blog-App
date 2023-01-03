@@ -61,6 +61,11 @@ class MyBlogsView extends GetView<MyBlogsController> {
                         padding: EdgeInsets.symmetric(
                             horizontal: 3.w, vertical: 2.w),
                         child: Post(
+                          delete: () {
+                            controller.deleteBlog(value.myBlogs[index].id);
+                          },
+                          edit: () {},
+                          isPopUpMenuEnabled: true,
                           model: value.myBlogs[index],
                         ),
                       );

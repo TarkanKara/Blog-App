@@ -52,6 +52,7 @@ class HomeView extends GetView<HomeController> {
                         padding: EdgeInsets.symmetric(
                             horizontal: 3.w, vertical: 2.w),
                         child: Post(
+                          isPopUpMenuEnabled: false,
                           model: value.blogs[index],
                         ),
                       );

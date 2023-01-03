@@ -203,4 +203,41 @@ class FirebaseFunctions {
       );
     }
   }
+
+  //deleteBLog
+  Future<void> deleteBlog(String id) async {
+    try {
+      await Future.wait(
+        [
+          deletePublicBlog(id),
+          deleteMyBlog(id),
+        ],
+      );
+    } catch (e) {
+      showAlert("$e");
+    }
+  }
+
+  //deletePublicBlog
+  Future<void> deletePublicBlog(String id) async {
+    try {
+      await _firebaseFirestore.collection("blogs").doc(id).delete();
+    } catch (e) {
+      showAlert("$e");
+    }
+  }
+
+  //deleteMyBlog
+  Future<void> deleteMyBlog(String id) async {
+    try {
+      await _firebaseFirestore
+          .collection("users")
+          .doc(_auth.currentUser!.uid)
+          .collection("myBlogs")
+          .doc(id)
+          .delete();
+    } catch (e) {
+      showAlert("$e");
+    }
+  }
 }

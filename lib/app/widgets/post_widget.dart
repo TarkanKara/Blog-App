@@ -7,7 +7,15 @@ import '../routes/app_pages.dart';
 
 class Post extends StatelessWidget {
   final BlogsModel model;
-  const Post({super.key, required this.model});
+  final Function? edit, delete;
+  final bool isPopUpMenuEnabled;
+  const Post({
+    super.key,
+    required this.model,
+    this.edit,
+    this.delete,
+    required this.isPopUpMenuEnabled,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +43,35 @@ class Post extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                alignment: Alignment.topRight,
+                child: isPopUpMenuEnabled
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PopupMenuButton(
+                          onSelected: (value) {
+                            if (value == 0) {
+                              edit!();
+                            } else if (value == 1) {
+                              delete!();
+                            }
+                          },
+                          child: const Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                          ),
+                          itemBuilder: (context) => [
+                            const PopupMenuItem(
+                              value: 0,
+                              child: Text("Edit"),
+                            ),
+                            const PopupMenuItem(
+                              value: 1,
+                              child: Text("Delete"),
+                            ),
+                          ],
+                        ),
+                      )
+                    : const SizedBox(),
               ),
               SizedBox(height: 1.h),
               Text(
