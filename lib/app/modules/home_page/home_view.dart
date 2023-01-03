@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController> {
             Text(
               "Blog App",
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 8.w,
+                    fontSize: 6.w,
                     fontWeight: FontWeight.w500,
                   ),
             ),
@@ -32,7 +32,7 @@ class HomeView extends GetView<HomeController> {
                 icon: Icon(
                   Icons.account_circle_rounded,
                   color: Colors.black,
-                  size: 10.w,
+                  size: 8.w,
                 )),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../routes/app_pages.dart';
+import '../../widgets/post_widget.dart';
 
 class MyBlogsView extends GetView<MyBlogsController> {
   const MyBlogsView({super.key});
@@ -46,6 +47,34 @@ class MyBlogsView extends GetView<MyBlogsController> {
             color: Colors.black,
           ),
         ),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: GetBuilder<MyBlogsController>(
+              builder: (value) {
+                if (value.myBlogs.isNotEmpty) {
+                  return ListView.builder(
+                    itemCount: value.myBlogs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 3.w, vertical: 2.w),
+                        child: Post(
+                          model: value.myBlogs[index],
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return const Center(
+                    child: Text("No Blogs Availabe?"),
+                  );
+                }
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

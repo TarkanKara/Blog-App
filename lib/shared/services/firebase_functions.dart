@@ -68,7 +68,13 @@ class FirebaseFunctions {
         "time": time,
       };
 
-      await _firebaseFirestore.collection("blogs").doc(id).set(blogDeatils);
+      await _firebaseFirestore
+          .collection("blogs")
+          .doc(id)
+          .set(blogDeatils)
+          .then((value) {
+        saveDataMyBlogs(id);
+      });
     } catch (e) {
       print("$e");
     }
@@ -147,6 +153,54 @@ class FirebaseFunctions {
     } else {
       print("Veri Bulunamadı");
       return [];
+    }
+  }
+
+  //saveDataToMyBlogs
+  Future<void> saveDataMyBlogs(String id) async {
+    try {
+      await _firebaseFirestore
+          .collection("users")
+          .doc(_auth.currentUser!.uid)
+          .collection("myBlogs")
+          .doc(id)
+          .set({"id": id});
+    } catch (e) {
+      showAlert("$e");
+    }
+  }
+
+  //getMyBlogs
+  Future<List> getMyBlogs() async {
+    try {
+      var querySnapshot = await _firebaseFirestore
+          .collection("users")
+          .doc(_auth.currentUser!.uid)
+          .collection("myBlogs")
+          .get();
+      return querySnapshot.docs.map((e) => e.data()["id"]).toList();
+    } catch (e) {
+      showAlert("$e");
+      return [];
+    }
+  }
+
+  //getBlogsById
+  Future<BlogsModel> getBlogsById(String id) async {
+    try {
+      var documentSnapshot =
+          await _firebaseFirestore.collection("blogs").doc(id).get();
+      return BlogsModel.fromJson(
+        documentSnapshot.data()!,
+      );
+    } catch (e) {
+      showAlert("$e");
+      return BlogsModel(
+        title: "",
+        description: "",
+        image: "",
+        id: "",
+      );
     }
   }
 }
