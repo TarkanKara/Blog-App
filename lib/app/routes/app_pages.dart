@@ -48,7 +48,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.UPLOAD_BLOG,
-      page: () => const UploadBlogView(),
+      page: () => UploadBlogView(),
       binding: UploadBlogBinding(),
     ),
     GetPage(

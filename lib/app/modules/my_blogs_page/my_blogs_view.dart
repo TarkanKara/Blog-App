@@ -64,7 +64,9 @@ class MyBlogsView extends GetView<MyBlogsController> {
                           delete: () {
                             controller.deleteBlog(value.myBlogs[index].id);
                           },
-                          edit: () {},
+                          edit: () {
+                            controller.editBlog(value.myBlogs[index]);
+                          },
                           isPopUpMenuEnabled: true,
                           model: value.myBlogs[index],
                         ),

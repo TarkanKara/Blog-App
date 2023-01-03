@@ -5,6 +5,8 @@ import 'package:blog_app/shared/services/firebase_functions.dart';
 import 'package:blog_app/utils/indicator.dart';
 import 'package:get/get.dart';
 
+import '../../routes/app_pages.dart';
+
 class MyBlogsController extends GetxController {
   //
   final FirebaseFunctions _functions = FirebaseFunctions();
@@ -51,5 +53,10 @@ class MyBlogsController extends GetxController {
     });
 
     Indicator.closeLoading();
+  }
+
+  //editBlog
+  void editBlog(BlogsModel model) async {
+    Get.toNamed(Routes.UPLOAD_BLOG, arguments: model);
   }
 }

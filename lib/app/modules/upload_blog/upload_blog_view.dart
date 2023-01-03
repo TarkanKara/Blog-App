@@ -1,3 +1,6 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:blog_app/app/models/blog_models.dart';
 import 'package:blog_app/app/modules/upload_blog/upload_blog_controller.dart';
 import 'package:blog_app/app/widgets/custom_button.dart';
 import 'package:blog_app/app/widgets/text_field.dart';
@@ -6,10 +9,17 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class UploadBlogView extends GetView<UploadBlogController> {
-  const UploadBlogView({super.key});
+  BlogsModel? model = Get.arguments;
+  UploadBlogView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //
+    if (model != null) {
+      controller.title = TextEditingController(text: model!.title);
+      controller.description = TextEditingController(text: model!.description);
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -95,9 +105,13 @@ class UploadBlogView extends GetView<UploadBlogController> {
         alignment: Alignment.bottomRight,
         child: CustomButton(
           icon: Icons.upload,
-          title: "CREATE BLOG",
+          title: model == null ? "CREATE BLOG" : "UPDATE BLOG",
           function: () {
-            controller.createBlog();
+            if (model == null) {
+              controller.createBlog();
+            } else {
+              controller.editBlog(model!);
+            }
           },
         ),
       ),

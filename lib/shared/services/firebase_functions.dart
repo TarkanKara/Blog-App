@@ -240,4 +240,13 @@ class FirebaseFunctions {
       showAlert("$e");
     }
   }
+
+  //editBlog
+  Future<void> editBlog(String id, Map<String, dynamic> map) async {
+    try {
+      await _firebaseFirestore.collection("blogs").doc(id).update(map);
+    } catch (e) {
+      showAlert("$e");
+    }
+  }
 }
